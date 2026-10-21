@@ -96,6 +96,9 @@ namespace Booking_system_API.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid>("FlightGuid")
+                        .HasColumnType("uuid");
+
                     b.Property<int>("NumberofTickets")
                         .HasColumnType("integer");
 
@@ -108,9 +111,36 @@ namespace Booking_system_API.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FlightGuid");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Bookings");
+                });
+
+            modelBuilder.Entity("Booking_system_API.Models.Flight", b =>
+                {
+                    b.Property<Guid>("FlightId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("ArrivalAirport")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("ArrivalDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("DepartureAirport")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DepartureDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("FlightId");
+
+                    b.ToTable("Flights");
                 });
 
             modelBuilder.Entity("Booking_system_API.Models.Ticket", b =>
@@ -125,6 +155,9 @@ namespace Booking_system_API.Migrations
                     b.Property<int>("BookingNumber")
                         .HasColumnType("integer");
 
+                    b.Property<Guid>("FlightId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("PassengerName")
                         .IsRequired()
                         .HasColumnType("text");
@@ -135,13 +168,14 @@ namespace Booking_system_API.Migrations
                     b.Property<int>("TicketPrice")
                         .HasColumnType("integer");
 
-                    b.Property<string>("TicketStatus")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("TicketStatus")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BookingId");
+
+                    b.HasIndex("FlightId");
 
                     b.ToTable("Tickets");
                 });
@@ -280,11 +314,19 @@ namespace Booking_system_API.Migrations
 
             modelBuilder.Entity("Booking_system_API.Models.Booking", b =>
                 {
+                    b.HasOne("Booking_system_API.Models.Flight", "Flight")
+                        .WithMany("Bookings")
+                        .HasForeignKey("FlightGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Booking_system_API.Models.ApplicationUser", "User")
                         .WithMany("Bookings")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Flight");
 
                     b.Navigation("User");
                 });
@@ -297,7 +339,15 @@ namespace Booking_system_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Booking_system_API.Models.Flight", "Flight")
+                        .WithMany("Tickets")
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Booking");
+
+                    b.Navigation("Flight");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -358,6 +408,13 @@ namespace Booking_system_API.Migrations
 
             modelBuilder.Entity("Booking_system_API.Models.Booking", b =>
                 {
+                    b.Navigation("Tickets");
+                });
+
+            modelBuilder.Entity("Booking_system_API.Models.Flight", b =>
+                {
+                    b.Navigation("Bookings");
+
                     b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618

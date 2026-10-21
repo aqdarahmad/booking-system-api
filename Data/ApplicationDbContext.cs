@@ -17,5 +17,6 @@ namespace Booking_system_API.Data;
         public DbSet<Booking> Bookings{ get; set; }
         public DbSet<Ticket>Tickets { get; set; }
 
+        public DbSet<Flight> Flights { get; set; }
 }
 

@@ -1,7 +1,10 @@
-﻿namespace Booking_system_API.DTO
+﻿using Booking_system_API.Models;
+
+namespace Booking_system_API.DTO
 {
     public class UpdateTicketStatusDto
     {
-        public string NewTicketStatus { get; set; } = string.Empty;
+        
+        public TicketStatus NewTicketStatus { get; set; }
     }
 }

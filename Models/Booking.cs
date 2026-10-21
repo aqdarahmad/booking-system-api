@@ -30,5 +30,11 @@ namespace Booking_system_API.Models
 
         public List<Ticket> Tickets { get; set; } = new();
 
+
+        [ForeignKey(nameof(Flight))]
+
+        public Guid Flightid { get; set; }
+        public Flight Flight { get; set; } = null!;
+
     }
 }

@@ -94,7 +94,8 @@ public class TicketsController : ControllerBase
         if (booking.Tickets.Count >= booking.NumberofTickets)
             return BadRequest("Invalid number of Ticket");
 
-
+        if (!Enum.IsDefined(typeof(TicketStatus), dto.NewTicketStatus))
+            return BadRequest("Invalid Ticket Status");
         var newticket = new Ticket
         {
             TicketPrice = dto.TicketPrice,
@@ -102,7 +103,7 @@ public class TicketsController : ControllerBase
             SeatNumber = dto.SeatNumber,
             PassengerName = dto.PassengerName,
             BookingNumber = booking.Tickets.Count + 1,
-            TicketStatus = "Confirmed",
+            TicketStatus = TicketStatus.Confirmed,
 
 
         };

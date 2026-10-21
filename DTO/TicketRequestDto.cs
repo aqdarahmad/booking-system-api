@@ -1,4 +1,6 @@
-﻿namespace Booking_system_API.DTO
+﻿using Booking_system_API.Models;
+
+namespace Booking_system_API.DTO
 {
     public class TicketRequestDto
     {
@@ -7,7 +9,7 @@
 
         public int BookingNumber { get; set; }
         public int TicketPrice { get; set; }
-        public string TicketStatus { get; set; } = string.Empty;
+        public TicketStatus NewTicketStatus { get; set; }
 
         public int SeatNumber { get; set; }
 

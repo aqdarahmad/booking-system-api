@@ -20,7 +20,7 @@ namespace Booking_system_API.Models;
     public int TicketPrice { get; set; }
 
     [Required]
-    public string TicketStatus { get; set; } = string.Empty;
+    public TicketStatus TicketStatus { get; set; } = TicketStatus.Pending;
 
     [Required]
     [Range(1,200)]
@@ -34,9 +34,21 @@ namespace Booking_system_API.Models;
 
 
 
+    [ForeignKey(nameof(Flight))]
+    public Guid FlightId { get; set; }
+
+
+    public Flight Flight { get; set; } = null!;
 
 
 
-    }
+
+
+
+
+
+
+
+}
 
 
