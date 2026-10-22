@@ -24,11 +24,14 @@ namespace Booking_system_API.Models
 
         public string ArrivalAirport { get; set; } = string.Empty;
 
-
-
         public List<Booking> Bookings { get; set; } = new();
 
         public List<Ticket> Tickets { get; set; } = new();
+
+        public string UserId { get; set; } = string.Empty;
+
+
+        public ApplicationUser User { get; set; } = null!;
 
 
 

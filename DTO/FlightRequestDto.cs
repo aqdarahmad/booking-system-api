@@ -21,6 +21,6 @@ namespace Booking_system_API.DTO
         [Required]
 
         public string ArrivalAirport { get; set; } = string.Empty;
-
+        public Guid BookingId { get; set; }
     }
 }

@@ -7,5 +7,7 @@ using Microsoft.AspNetCore.Identity;
     {
 
     public List<Booking> Bookings { get; set; } = new();
+
+
     }
 
