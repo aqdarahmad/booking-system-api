@@ -104,6 +104,7 @@ public class TicketsController : ControllerBase
             PassengerName = dto.PassengerName,
             BookingNumber = booking.Tickets.Count + 1,
             TicketStatus = TicketStatus.Confirmed,
+            FlightId=dto.FlightId,
 
 
         };

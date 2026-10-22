@@ -96,7 +96,7 @@ namespace Booking_system_API.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("FlightGuid")
+                    b.Property<Guid>("Flightid")
                         .HasColumnType("uuid");
 
                     b.Property<int>("NumberofTickets")
@@ -111,7 +111,7 @@ namespace Booking_system_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FlightGuid");
+                    b.HasIndex("Flightid");
 
                     b.HasIndex("UserId");
 
@@ -316,7 +316,7 @@ namespace Booking_system_API.Migrations
                 {
                     b.HasOne("Booking_system_API.Models.Flight", "Flight")
                         .WithMany("Bookings")
-                        .HasForeignKey("FlightGuid")
+                        .HasForeignKey("Flightid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

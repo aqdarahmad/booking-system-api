@@ -15,5 +15,7 @@ namespace Booking_system_API.DTO
 
         public Guid Bookingid { get; set; }
 
+        public Guid FlightId { get; set; }
+
     }
 }

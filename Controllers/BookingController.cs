@@ -21,13 +21,13 @@ namespace Booking_system_API.Controllers;
             _context = context;
         }
 
-
+    [Authorize]
     [HttpPost]
 
     public async Task<IActionResult> CreateBooking([FromBody] BookingRequestDto request)
     {
 
-        var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+       var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
         if(userid == null)
         {
@@ -35,11 +35,12 @@ namespace Booking_system_API.Controllers;
         }
         if (request.NumberofTickets <= 0)
             return BadRequest("Number of tickets must be greater than 0");
-
+     
         if (request.TravelDate <= DateTime.UtcNow)
             return BadRequest("Travel date must be in the future");
         var newBooking = new Booking
         {   UserId=userid,
+            Flightid=request.FlightId,
             TravelDate = request.TravelDate,
             NumberofTickets = request.NumberofTickets,
             Destination = request.Destination,

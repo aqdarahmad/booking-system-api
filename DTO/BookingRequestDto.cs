@@ -15,5 +15,8 @@ namespace Booking_system_API.DTO
         public string Destination { get; set; } = string.Empty;
 
 
+        public Guid FlightId { get; set; }
+
+
     }
 }

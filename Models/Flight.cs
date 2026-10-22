@@ -11,8 +11,6 @@ namespace Booking_system_API.Models
 
         public DateTime DepartureDate { get; set; }
 
-
-
         [Required]
 
         public DateTime ArrivalDate { get; set; }
