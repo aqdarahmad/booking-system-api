@@ -63,9 +63,9 @@ ApplicationUser ──< Booking ──< Ticket
 | Method | Endpoint            | Access | Description                                        |
 | ------ | ------------------- | ------ | -------------------------------------------------- |
 | POST   | `/api/Booking`      | User   | Create a booking                                   |
-| GET    | `/api/Booking`      | User   | List my bookings (optional `?destination=` filter) |
-| PUT    | `/api/Booking/{id}` | User   | Change the travel date of my booking               |
-| DELETE | `/api/Booking/{id}` | User   | Cancel my booking                                  |
+| GET    | `/api/Booking`      |  Admin | List my bookings (optional `?destination=` filter) |
+| PUT    | `/api/Booking/{id}` |  Admin | Change the travel date of my booking               |
+| DELETE | `/api/Booking/{id}` |  Admin | Cancel my booking                                  |
 
 ### Tickets
 
@@ -77,6 +77,14 @@ ApplicationUser ──< Booking ──< Ticket
 | PUT    | `/api/Tickets/{id}` | Admin  | Update a ticket's status        |
 | DELETE | `/api/Tickets/{id}` | Admin  | Delete a ticket                 |
 
+### Flights
+
+| Method | Endpoint            | Access | Description                                      |
+| ------ | ------------------- | ------ | ------------------------------------------------ |
+| GET    | `/api/Flight`       | Admin  | List all flights                                 |
+| POST   | `/api/Flight`       | Admin  | Create a flight for a user's booking             |
+| PUT    | `/api/Flight/{id}`  | Admin  | Update a flight                                  |
+| DELETE | `/api/Flight/{id}`  | Admin  | Delete a flight (must have at least one booking) |
 ## 🚀 Getting Started
 
 ### Prerequisites
