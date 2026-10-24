@@ -1,4 +1,4 @@
-```dockerfile
+
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
@@ -13,5 +13,5 @@ COPY --from=build /app/publish .
 ENV ASPNETCORE_URLS=http://+:10000
 EXPOSE 10000
 
-ENTRYPOINT ["dotnet", "Booking-System-API.dll"]
-```
+
+ENTRYPOINT ["dotnet", "Booking-system-API.dll"]
