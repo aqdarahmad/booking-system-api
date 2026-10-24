@@ -13,5 +13,9 @@ COPY --from=build /app/publish .
 ENV ASPNETCORE_URLS=http://+:10000
 EXPOSE 10000
 
+<<<<<<< HEAD
 
 ENTRYPOINT ["dotnet", "Booking-system-API.dll"]
+=======
+ENTRYPOINT ["dotnet", "Booking-System-API.dll"]
+>>>>>>> edd27e9fb5311b6a6e98a46e9d3041c793805b2c
