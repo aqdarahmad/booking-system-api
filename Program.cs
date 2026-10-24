@@ -118,6 +118,12 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapGet("/", () => Results.Ok(new
+{
+    message = "Booking System API is running",
+    swagger = "/swagger"
+}));
+
 app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
