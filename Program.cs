@@ -107,11 +107,11 @@ builder.Services.AddAuthorization();
 var app = builder.Build();
 
 // Configure HTTP Request Pipeline
-if (app.Environment.IsDevelopment())
-{
+
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 app.UseHttpsRedirection();
 
